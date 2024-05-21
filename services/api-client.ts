@@ -1,8 +1,8 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
-export interface FetchResponse<T> {
-  count: number;
-  next: string | null;
+export interface Response<T> {
+  sha: string;
+  commit: string | null;
   previous: string | null;
   results: T[];
 }
@@ -20,7 +20,7 @@ class APIClient<T> {
 
   getAll = (config: AxiosRequestConfig) => {
     return axiosInstance
-      .get<FetchResponse<T>>(this.endpoint, config)
+      .get<Response<T>>(this.endpoint, config)
       .then((res) => res.data);
   };
 
