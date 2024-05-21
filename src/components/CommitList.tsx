@@ -9,8 +9,9 @@ export default function CommitList({ userRepo }: Props) {
 
   if (!data)
     return (
-      <h2 className="text-red-700 font-bold">
-        No data available for provided repo name: {userRepo}.
+      <h2 className="text-exeterGrey-700">
+        No data available for provided repo name:{' '}
+        <span className="font-bold"> {userRepo}</span>.
       </h2>
     );
 
