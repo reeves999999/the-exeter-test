@@ -2,6 +2,10 @@
 
 ### Note - far from complete
 
+## You can run locally or see in action at Vercel here:
+
+https://the-exeter-test.vercel.app/
+
 ## Tools used
 
 - React 18
