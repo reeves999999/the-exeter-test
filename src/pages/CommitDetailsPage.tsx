@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import useCommit from '../hooks/useCommit';
 
 const CommitDetailsPage = () => {
@@ -27,6 +27,15 @@ const CommitDetailsPage = () => {
         <div className="bg-gray-200 p-2">Date:</div>
         <div className="p-2">{data?.commit.author?.date}</div>
       </section>
+
+      <div className="flex justify-end">
+        <Link
+          to={'/'}
+          className="bg-exeter-yellow-900 py-2 px-4 rounded-md hover:opacity-70  transition cursor:pointer disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Search again
+        </Link>
+      </div>
     </main>
   );
 };

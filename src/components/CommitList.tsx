@@ -4,10 +4,9 @@ import useCommits from '../hooks/useCommits';
 import CommitListItem from './CommitListItem';
 
 export default function CommitList() {
-  const { userRepo, setUserRepo } = useContext(UserRepoContext);
+  const { userRepo } = useContext(UserRepoContext);
 
-  console.log('call', userRepo);
-  const { data, error, isLoading } = useCommits(userRepo);
+  const { data} = useCommits(userRepo);
 
   if (!data) {
     return (

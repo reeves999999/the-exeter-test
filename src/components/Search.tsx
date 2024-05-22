@@ -1,17 +1,21 @@
-import { useContext, useRef, useState } from 'react';
+import { FormEvent, useContext, useRef, useState } from 'react';
 import { UserRepoContext } from '../contexts/UserRepoContext';
 
 const Search = () => {
-  const { userRepo, setUserRepo } = useContext(UserRepoContext);
+  const { setUserRepo } = useContext(UserRepoContext);
 
   const [search, setSearch] = useState('');
 
-  const handleClick = () => {
+  const handleChange = (value: string) => {
+    setSearch(value);
+  };
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
     setUserRepo(search);
   };
 
   return (
-    <div className="flex justify-end mx-20 my-4">
+    <form className="flex justify-end mx-20 my-4" onSubmit={handleSubmit}>
       <div className="relative">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -33,17 +37,19 @@ const Search = () => {
         className="w-80 border rounded-md py-2 pl-10 pr-4 mr-2 border-gray-700 focus:ring"
         placeholder="e.g. reeves999999/the-exeter-test"
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => handleChange(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' && search) handleSubmit;
+        }}
       />
       <button
-        type="button"
+        type="submit"
         className="bg-exeter-yellow-900 py-2 px-4 rounded-md hover:opacity-70  transition cursor:pointer disabled:opacity-50 disabled:cursor-not-allowed"
-        onClick={handleClick}
         disabled={!search}
       >
         Search
       </button>
-    </div>
+    </form>
   );
 };
 
