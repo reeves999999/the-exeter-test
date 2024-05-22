@@ -16,6 +16,8 @@
 
 ## Use reeves999999/the-exeter-test for working example
 
+## Due to unauthorised usage limits, GitHub restricts hits to the API to 60 per hour. I have reduced the useQuery retry count accordingly.
+
 ## Incompleted tasks
 
 - Further consolidation, abstractions and tidy up
