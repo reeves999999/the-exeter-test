@@ -1,16 +1,18 @@
 import { useQuery } from '@tanstack/react-query';
+import ms from 'ms';
+import commits from '../data/commits.json';
 import CommitItem from '../entities/CommitItem';
 import APIClient from '../services/api-client';
 
-const useCommits = (userRepo:string ) =>{
-    
-const apiClient = new APIClient<CommitItem>(userRepo);
-
-    return useQuery({
+const useCommits = (userRepo: string) => {
+  const apiClient = new APIClient<CommitItem>(userRepo);
+  return useQuery({
     queryKey: ['commits'],
-    queryFn: () => apiClient.getAll(userRepo),
+    queryFn: () => apiClient.getAll(),
+    staleTime: ms('1m'),
+    retry: 2,
+    //initialData: commits,
   });
-}
-  
+};
 
 export default useCommits;

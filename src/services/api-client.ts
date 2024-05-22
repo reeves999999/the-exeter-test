@@ -9,8 +9,10 @@ class APIClient<T> {
   constructor(endpoint: string) {
     this.endpoint = endpoint;
   }
-  getAll = (userRepo:string) => {
-    return axiosInstance.get<T[]>(`${this.endpoint}/commits`).then((res) => res.data);
+  getAll = () => {
+    return axiosInstance
+      .get<T[]>(`${this.endpoint}/commits`)
+      .then((res) => res.data);
   };
 
   get = (sha: string) => {

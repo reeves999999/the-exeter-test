@@ -1,11 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import NavBar from '../components/Header';
+import { UserRepoProvider } from '../contexts/UserRepoContext';
 
 function Layout() {
   return (
     <main>
-      <NavBar />
-      <Outlet />
+      <UserRepoProvider>
+        <NavBar />
+        <Outlet />
+      </UserRepoProvider>
     </main>
   );
 }

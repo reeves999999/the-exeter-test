@@ -7,9 +7,10 @@ const apiClient = new APIClient<CommitItem>('/commits');
 
 const useCommit = (sha: string) =>
   useQuery({
-    queryKey: ['commits',sha],
+    queryKey: ['commits', sha],
     queryFn: () => apiClient.get(sha),
     staleTime: ms('24h'),
+    retry: 3,
   });
 
 export default useCommit;

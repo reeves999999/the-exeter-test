@@ -1,21 +1,29 @@
+import { useContext } from 'react';
+import { UserRepoContext } from '../contexts/UserRepoContext';
 import useCommits from '../hooks/useCommits';
+import CommitListItem from './CommitListItem';
 
-interface Props {
-  userRepo: string;
-}
+export default function CommitList() {
+  const { userRepo, setUserRepo } = useContext(UserRepoContext);
 
-export default function CommitList({ userRepo }: Props) {
-  const { data } = useCommits(userRepo);
+  console.log('call', userRepo);
+  const { data, error, isLoading } = useCommits(userRepo);
 
-  if (!data)
+  if (!data) {
     return (
-      <h2 className="text-exeterGrey-700">
-        No data available for provided repo name:{' '}
+      <h2 className="text-exeter-grey-900">
+        No commits available for provided repo name:{' '}
         <span className="font-bold"> {userRepo}</span>.
       </h2>
     );
+  }
 
   return (
-    <>{data && data.map((c) => <h2 key={c.sha}>{c.commit.author.name}</h2>)}</>
+    <>
+      {data?.length &&
+        data.map((commit) => (
+          <CommitListItem key={commit.sha} commitItem={commit} />
+        ))}
+    </>
   );
 }
