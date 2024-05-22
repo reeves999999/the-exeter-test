@@ -11,7 +11,7 @@ class APIClient<T> {
   }
   getAll = () => {
     return axiosInstance
-      .get<T[]>(`${this.endpoint}/commits`)
+      .get<T[]>(`${this.endpoint}/commits?per_page=100`)
       .then((res) => res.data);
   };
 

@@ -6,7 +6,7 @@ import CommitListItem from './CommitListItem';
 export default function CommitList() {
   const { userRepo } = useContext(UserRepoContext);
 
-  const { data} = useCommits(userRepo);
+  const { data } = useCommits(userRepo);
 
   if (!data) {
     return (
@@ -19,6 +19,7 @@ export default function CommitList() {
 
   return (
     <>
+      <p className="font-bold text-lg mb-4">{data.length} commits found.</p>
       <div className="grid grid-cols-2 bg-white rounded-md overflow-hidden border border-gray-300">
         <div className="bg-gray-200 py-2 px-4 font-bold border-r border-gray-300">
           ID
