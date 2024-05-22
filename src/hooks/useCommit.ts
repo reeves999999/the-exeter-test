@@ -3,14 +3,14 @@ import ms from 'ms';
 import CommitItem from '../entities/CommitItem';
 import APIClient from '../services/api-client';
 
-const apiClient = new APIClient<CommitItem>('/commits');
-
-const useCommit = (sha: string) =>
-  useQuery({
+const useCommit = (user: string, repo: string, sha: string) => {
+  const apiClient = new APIClient<CommitItem>(`${user}/${repo}`);
+  return useQuery({
     queryKey: ['commits', sha],
-    queryFn: () => apiClient.get(sha),
+    queryFn: () => apiClient.get(`commits/${sha}`),
     staleTime: ms('24h'),
-    retry: 3,
+    retry: 1,
   });
+};
 
 export default useCommit;

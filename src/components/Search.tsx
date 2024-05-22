@@ -37,7 +37,7 @@ const Search = () => {
       />
       <button
         type="button"
-        className="bg-exeter-yellow-900 py-2 px-4 rounded-md hover:opacity-70  transition cursor:pointer disabled:opacity-50 cursor-not-allowed"
+        className="bg-exeter-yellow-900 py-2 px-4 rounded-md hover:opacity-70  transition cursor:pointer disabled:opacity-50 disabled:cursor-not-allowed"
         onClick={handleClick}
         disabled={!search}
       >

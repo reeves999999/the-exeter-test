@@ -15,7 +15,7 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: 'details/:sha',
+        path: 'details/:user/:repo/:sha',
         element: <CommitDetailsPage />,
       },
     ],

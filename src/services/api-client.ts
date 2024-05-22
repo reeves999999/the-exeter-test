@@ -15,9 +15,9 @@ class APIClient<T> {
       .then((res) => res.data);
   };
 
-  get = (sha: string) => {
+  get = (url: string) => {
     return axiosInstance
-      .get<T>(`${this.endpoint}/${sha}`)
+      .get<T>(`${this.endpoint}/${url}`)
       .then((res) => res.data);
   };
 }
