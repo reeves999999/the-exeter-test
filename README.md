@@ -29,5 +29,6 @@ https://the-exeter-test.vercel.app/
 - Misc. UI/UX improvements
 - Extented tests
 - Add/improve loading and error states
+- Commits pagination
 
 ## Hopefully enough here to demonstrate knowledge at least.
