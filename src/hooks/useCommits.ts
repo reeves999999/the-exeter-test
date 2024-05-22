@@ -9,9 +9,9 @@ const useCommits = (userRepo: string) => {
   return useQuery({
     queryKey: ['commits'],
     queryFn: () => apiClient.getAll(),
-    staleTime: ms('1m'),
+    staleTime: ms('5m'),
     retry: 2,
-    //initialData: commits,
+    initialData: commits,
   });
 };
 

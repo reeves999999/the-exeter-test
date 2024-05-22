@@ -1,14 +1,13 @@
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { UserRepoContext } from '../contexts/UserRepoContext';
 
 const Search = () => {
   const { userRepo, setUserRepo } = useContext(UserRepoContext);
 
-  const inputRef = useRef<HTMLInputElement>(null);
-  inputRef.current?.focus();
+  const [search, setSearch] = useState('');
 
   const handleClick = () => {
-    setUserRepo(inputRef.current!.value);
+    setUserRepo(search);
   };
 
   return (
@@ -32,13 +31,15 @@ const Search = () => {
       <input
         type="text"
         className="w-80 border rounded-md py-2 pl-10 pr-4 mr-2 border-gray-700 focus:ring"
-        placeholder="reeves999999/the-exeter-test"
-        ref={inputRef}
+        placeholder="e.g. reeves999999/the-exeter-test"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
       />
       <button
         type="button"
-        className="bg-exeter-yellow-900 py-2 px-4 rounded-md hover:opacity-70  transition cursor:pointer"
+        className="bg-exeter-yellow-900 py-2 px-4 rounded-md hover:opacity-70  transition cursor:pointer disabled:opacity-50 cursor-not-allowed"
         onClick={handleClick}
+        disabled={!search}
       >
         Search
       </button>

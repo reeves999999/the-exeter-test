@@ -20,10 +20,16 @@ export default function CommitList() {
 
   return (
     <>
-      {data?.length &&
-        data.map((commit) => (
-          <CommitListItem key={commit.sha} commitItem={commit} />
-        ))}
+      <div className="grid grid-cols-2 bg-white rounded-md overflow-hidden border border-gray-300">
+        <div className="bg-gray-200 py-2 px-4 font-bold border-r border-gray-300">
+          ID
+        </div>
+        <div className="bg-gray-200 py-2 px-4 font-bold">Message</div>
+        {data?.length &&
+          data.map((commit) => (
+            <CommitListItem key={commit.sha} commitItem={commit} />
+          ))}
+      </div>
     </>
   );
 }
